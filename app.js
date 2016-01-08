@@ -38,8 +38,9 @@ function scrubMessage (req, res, next){
   // console.log(typeof message);
 
   for (var key in convertWords){
+    //dynamically creating RegExp to match all instances of a word, e.g. key
     //redefined message to be able to use replace, which works with strings
-    message = message.replace(key, convertWords[key]);
+    message = message.replace(new RegExp(key, 'gi'), convertWords[key]);
   }
   res.send(message);
   return next();
