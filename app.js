@@ -1,4 +1,5 @@
 //if unable to find module need to npm install -S (express, body-parser, jade)
+//FOLLOW-UP with Tony on github commit issue
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -46,8 +47,14 @@ function scrubMessage (req, res, next){
   return next();
 }
 
-app.get('/words', function (req, res){
-
+app.get('/views', function (req, res){
+  res.render('index.jade', function (err, html) {
+    if(err){
+      res.status = 404;
+      return res.send('Error Error');
+    }
+    res.send(html);
+  });
 });
 
 app.post('/words', function (req, res){
