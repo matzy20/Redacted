@@ -56,11 +56,12 @@ app.get('/views', function (req, res){
     res.send(html);
   });
 });
-
+/*make sure index.jade has action pointing to where logic is, which was /words*/
 app.post('/words', function (req, res){
-  res.send('Posted words');
+  console.log(req.body);
+  res.send('Post coming through');
 });
-//use res.render() on the form, which is on the get
+
 
 
 var server = app.listen(3000, function (){
